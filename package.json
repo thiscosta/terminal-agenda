@@ -1,0 +1,23 @@
+{
+  "name": "terminal-clock",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A realtime terminal clock with a daily calendar agenda.",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && node dist/main.js",
+    "dev": "tsx src/main.ts",
+    "auth": "tsx src/auth.ts"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "googleapis": "^150.0.1"
+  },
+  "devDependencies": {
+    "@types/blessed": "^0.1.27",
+    "@types/node": "^26.6.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
