@@ -2,6 +2,17 @@
 
 A realtime clock and today's calendar agenda in a Node.js terminal UI built with `blessed`.
 
+## Install and run
+
+Install globally to use the command exactly as shown:
+
+```sh
+npm install -g thiscosta-terminal-agenda
+thiscosta-terminal-agenda start
+```
+
+For a local project install, use `npm install thiscosta-terminal-agenda` and run `npx thiscosta-terminal-agenda start`.
+
 ## macOS setup
 
 1. Add your Google account to macOS under **System Settings → Internet Accounts** and enable **Calendars**. If the account is already in the Calendar app, no extra account setup is needed.

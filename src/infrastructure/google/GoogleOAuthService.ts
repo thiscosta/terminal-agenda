@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import path from 'node:path';
 import http from 'node:http';
 import { spawn } from 'node:child_process';
 import { URL } from 'node:url';
@@ -37,6 +38,7 @@ export class GoogleOAuthService {
           }
           try {
             const { tokens } = await auth.getToken(code);
+            fs.mkdirSync(path.dirname(this.config.tokenPath), { recursive: true });
             fs.writeFileSync(this.config.tokenPath, JSON.stringify(tokens, null, 2), { mode: 0o600 });
             response.writeHead(200, { 'Content-Type': 'text/plain' }).end('Connected to Google Calendar. You can close this page.');
             resolve();

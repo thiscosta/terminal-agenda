@@ -1,7 +1,7 @@
 export const theme = {
   background: '#080d1d',
   panel: '#080d1d',
-  red: '#ff0000',
+  red: '#ff171d',
   amber: '#f2a900',
   teal: '#08d69a',
   muted: '#66728e',

@@ -1,14 +1,14 @@
 {
-  "name": "terminal-clock",
+  "name": "thiscosta-terminal-agenda",
   "version": "1.0.0",
-  "private": true,
-  "description": "A realtime terminal clock with a daily calendar agenda.",
+  "description": "A vibrant terminal clock with a Google Calendar agenda.",
   "main": "dist/main.js",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node dist/main.js",
+    "start": "npm run build && node dist/cli.js start",
     "dev": "tsx src/main.ts",
-    "auth": "tsx src/auth.ts"
+    "auth": "tsx src/auth.ts",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "blessed": "^0.1.81",
@@ -19,5 +19,25 @@
     "@types/node": "^26.6.3",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"
+  },
+  "bin": {
+    "thiscosta-terminal-agenda": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "terminal",
+    "clock",
+    "calendar",
+    "google-calendar",
+    "tui",
+    "blessed"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
   }
 }

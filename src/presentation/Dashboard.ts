@@ -108,11 +108,11 @@ export class Dashboard {
   private render(): void {
     const screenHeight = Number(this.screen.height || 24);
     const contentHeight = screenHeight - 4;
-    const clockHeight = Math.max(9, Math.min(contentHeight - 6, Math.floor(contentHeight * 0.62)));
+    const clockHeight = Math.max(10, Math.min(contentHeight - 6, Math.floor(contentHeight * 0.4)));
     this.clockPanel.height = clockHeight;
     this.agendaPanel.top = 3 + clockHeight;
     this.agendaPanel.height = Math.max(1, screenHeight - this.agendaPanel.top - 1);
-    this.clockWidget.update(Math.max(7, clockHeight - 4));
+    this.clockWidget.update();
     this.screen.render();
   }
 

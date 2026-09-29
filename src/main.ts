@@ -7,7 +7,7 @@ import { GoogleOAuthService } from './infrastructure/google/GoogleOAuthService';
 import { Dashboard } from './presentation/Dashboard';
 import type { CalendarEventRepository } from './domain/CalendarEventRepository';
 
-async function main(): Promise<void> {
+export async function start(): Promise<void> {
   const config = loadCalendarConfig();
   const repository: CalendarEventRepository = config.platform === 'darwin'
     ? new MacCalendarRepository()
@@ -20,7 +20,9 @@ async function main(): Promise<void> {
   await dashboard.start();
 }
 
-main().catch(error => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});
+if (require.main === module) {
+  start().catch(error => {
+    console.error(error instanceof Error ? error.message : error);
+    process.exitCode = 1;
+  });
+}

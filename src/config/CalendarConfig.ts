@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 
 export interface GoogleOAuthConfig {
@@ -16,13 +17,14 @@ export interface CalendarConfig {
 }
 
 export function loadCalendarConfig(): CalendarConfig {
-  const root = path.resolve(__dirname, '../..');
-  const credentialsPath = process.env.GOOGLE_CREDENTIALS || path.join(root, 'credentials.json');
+  const configHome = process.env.XDG_CONFIG_HOME || path.join(os.homedir(), '.config');
+  const appHome = path.join(configHome, 'thiscosta-terminal-agenda');
+  const credentialsPath = process.env.GOOGLE_CREDENTIALS || path.join(appHome, 'credentials.json');
   return {
     platform: process.platform,
     google: readGoogleOAuthConfig(credentialsPath),
     credentialsPath,
-    tokenPath: process.env.GOOGLE_TOKEN || path.join(root, 'token.json'),
+    tokenPath: process.env.GOOGLE_TOKEN || path.join(appHome, 'token.json'),
     calendarId: process.env.GOOGLE_CALENDAR_ID || 'primary',
   };
 }
